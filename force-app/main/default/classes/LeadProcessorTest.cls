@@ -1,4 +1,4 @@
-@is@TestSetup
+@isTest
 private class LeadProcessorTest {
     
     @isTest

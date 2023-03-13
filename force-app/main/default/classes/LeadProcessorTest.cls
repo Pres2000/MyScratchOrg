@@ -1,24 +1,24 @@
 @isTest
 private class LeadProcessorTest {
-    
+
     @isTest
     private static void testBatchClass() {
 
-        //load data
+        // Load test data
         List<Lead> leads = new List<Lead>();
         for (Integer i = 0; i < 200; i++) {
-            leads.add(new Lead(LastName='Connock', Company='Salesforce'));
+            leads.add(new Lead(LastName='Çonnock', Company='Salesforce'));
         }
         insert leads;
 
-        //perform the test
+        // Perform the test
         Test.startTest();
         LeadProcessor lp = new LeadProcessor();
         Id batchId = Database.executeBatch(lp, 200);
         Test.stopTest();
 
-        //check the result
-        List<Lead> updatedLeads = [SELECT Id FROM Lead WHERE LeadSource = 'Dreamforce'];
-        System.assertEquals(200, updatedLeads.size(), 'Error: at least 1 Lead record not updated correctly');
+        // Check the result
+        List<lead> updatedLeads = [SELECT Id FROM Lead WHERE LeadSource = 'Dreamforce'];
+        System.assertEquals(200, updatedLeads.size(), 'ERROR: At least 1 Lead record not updated correctly');
     }
 }
